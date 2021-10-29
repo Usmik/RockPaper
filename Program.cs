@@ -8,20 +8,21 @@ namespace rps
 {
     class Hmac
     {
-        public static void ToHmac(byte[] key, string pcStep)
+        public static void PrintHmac(byte[] key, string pcStep)
         {
-            byte[] step = Encoding.ASCII.GetBytes(pcStep);
+            byte[] pcStepBytes = Encoding.ASCII.GetBytes(pcStep);
             HMACSHA256 hmac = new HMACSHA256(key);
-            var hmacHash = hmac.ComputeHash(step);
-            Console.WriteLine(BitConverter.ToString(hmacHash));
+            var pcStepHash = hmac.ComputeHash(pcStepBytes);
+            Console.WriteLine(BitConverter.ToString(pcStepHash));
         }
     }
 
     class key
     {
+        const int KEY_LENGTH = 128;
         public static byte[] keyGenerate()
         {
-            byte[] resultKey = new Byte[16];
+            byte[] resultKey = new Byte[KEY_LENGTH / 8];
             RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider();
             rng.GetBytes(resultKey);
             return resultKey;
@@ -59,14 +60,14 @@ namespace rps
             }
             else if (args.Length != args.Select(x => x.ToLower()).Distinct<string>().Count())
             {
-                Console.WriteLine("Wrong args(they can't repeat");
+                Console.WriteLine("Wrong args(they can't repeat)");
                 return;
             }
 
             byte[] secretKey = key.keyGenerate();
             int pcChoice = computerChoice(args.Length);
             Console.WriteLine("HMAC:");
-            Hmac.ToHmac(secretKey, args[pcChoice]);
+            Hmac.PrintHmac(secretKey, args[pcChoice]);
 
             while (true)
             {
@@ -86,21 +87,21 @@ namespace rps
                 }
                 else if (!Char.IsSeparator(userChoice[0]) && Char.IsNumber(userChoice, 0))
                 {
-                    int userChoiceChecked = Convert.ToInt32(userChoice);
+                    int userChoiceChecked = Convert.ToInt32(userChoice) - 1;
                     if (userChoiceChecked < 0 || userChoiceChecked > args.Length)
                     {
                         Console.WriteLine("Enter a correct number");
                         continue;
                     }
-                    Console.WriteLine($"Your move: {args[userChoiceChecked - 1]}");
+                    Console.WriteLine($"Your move: {args[userChoiceChecked]}");
                     Console.WriteLine($"Computer move: {args[pcChoice]}");
-                    if (pcChoice == (userChoiceChecked - 1))
+                    if (pcChoice == (userChoiceChecked))
                         Console.WriteLine("Draw");
 
-                    else if (pcChoice > (userChoiceChecked - 1) && (pcChoice - userChoiceChecked - 1) <= (args.Length / 2))
+                    else if (pcChoice > userChoiceChecked && (args.Length / 2 >= (pcChoice - userChoiceChecked)))
                         Console.WriteLine("You lose! (:");
 
-                    else if (pcChoice < (userChoiceChecked - 1) && (userChoiceChecked - 1 - pcChoice) > (args.Length / 2))
+                    else if (pcChoice < userChoiceChecked && ((userChoiceChecked - pcChoice) > (args.Length / 2)))
                         Console.WriteLine("You lose!");
 
                     else
@@ -108,7 +109,6 @@ namespace rps
 
                     Console.WriteLine("HMAC Key:");
                     Console.WriteLine(BitConverter.ToString(secretKey));
-                    return;
                 }
                 else
                     Console.WriteLine("Try again");
