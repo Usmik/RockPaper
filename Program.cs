@@ -37,13 +37,9 @@ namespace rps
             for (int i = 0; i < args.Length + 1; i++)
             {
                 if (i == args.Length)
-                {
                     yield break;
-                }
                 else
-                {
                     yield return args[i];
-                }
             }
         }
         static string CompareMoves(int pcMove, int userMove, string[] args)
