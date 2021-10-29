@@ -2,7 +2,8 @@
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-
+using ConsoleTables;
+using System.Collections.Generic;
 
 namespace rps
 {
@@ -31,6 +32,33 @@ namespace rps
 
     class Program
     {
+        static public IEnumerable<string> GetArgs(string[] args)
+        {
+            for (int i = 0; i < args.Length + 1; i++)
+            {
+                if (i == args.Length)
+                {
+                    yield break;
+                }
+                else
+                {
+                    yield return args[i];
+                }
+            }
+        }
+        static string CompareMoves(int pcMove, int userMove, string[] args)
+        {
+            string answer;
+            if (pcMove == (userMove))
+                answer = "Draw";
+            else if (pcMove > userMove && (args.Length / 2 >= (pcMove - userMove)))
+                answer = "Lose";
+            else if (pcMove < userMove && ((userMove - pcMove) > (args.Length / 2)))
+                answer = "Lose";
+            else
+                answer = "Win!";
+            return answer;
+        }
         static void menu(string[] args)
         {
             for (int i = 0; i < args.Length; i++)
@@ -43,6 +71,25 @@ namespace rps
         static int computerChoice(int limit)
         {
             return RandomNumberGenerator.GetInt32(limit);
+        }
+
+        static string[] MakeRow(string[] args, int el)
+        {
+            string[] row = new string[args.Length + 1];
+            row[0] = args[el];
+            for (int i = 1; i < row.Length; i++)
+            {
+                row[i] = CompareMoves(el, i - 1, args);
+            }
+            return row;
+        }
+        static void MakeTable(string[] args)
+        {
+            var table = new ConsoleTable("PC\\User");
+            table.AddColumn(GetArgs(args));
+            for (int i = 0; i < args.Length; i++)
+                table.AddRow(MakeRow(args, i));
+            table.Write(Format.Alternative);
         }
 
         static void Main(string[] args)
@@ -77,7 +124,7 @@ namespace rps
                 string userChoice = Console.ReadLine();
                 if (userChoice == "?")
                 {
-                    Console.WriteLine("LETS IMAGINE YOU SEE A HELP TABLE");
+                    MakeTable(args);
                     continue;
                 }
                 else if (userChoice == "0")
@@ -95,20 +142,12 @@ namespace rps
                     }
                     Console.WriteLine($"Your move: {args[userChoiceChecked]}");
                     Console.WriteLine($"Computer move: {args[pcChoice]}");
-                    if (pcChoice == (userChoiceChecked))
-                        Console.WriteLine("Draw");
 
-                    else if (pcChoice > userChoiceChecked && (args.Length / 2 >= (pcChoice - userChoiceChecked)))
-                        Console.WriteLine("You lose! (:");
-
-                    else if (pcChoice < userChoiceChecked && ((userChoiceChecked - pcChoice) > (args.Length / 2)))
-                        Console.WriteLine("You lose!");
-
-                    else
-                        Console.WriteLine("You Win! Gratz!");
+                    Console.WriteLine("You " + CompareMoves(pcChoice, userChoiceChecked, args));
 
                     Console.WriteLine("HMAC Key:");
                     Console.WriteLine(BitConverter.ToString(secretKey));
+                    return;
                 }
                 else
                     Console.WriteLine("Try again");

@@ -1,8 +1,19 @@
 {
   "version": 2,
-  "dgSpecHash": "7o6B1V24/5JSYk0V9b7bmu+25eiDiB0gBsKb2OMh1sMZASisWqu6Os+PSAM3zMzSOzwCy0y/Q2yKJdH+iAljlQ==",
+  "dgSpecHash": "VTCY32kDCBW3rEJgr6eYVxaPk2YPfLRpyjh0R7aG9tHBBBcMRyXuSju/Q3syk1LCmDH2HBlrAgoS426cp0Vf6w==",
   "success": true,
   "projectFilePath": "/home/usmik/Projects VS Code/rps/rps.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/home/usmik/.nuget/packages/consoletables/2.4.2/consoletables.2.4.2.nupkg.sha512",
+    "/home/usmik/.nuget/packages/microsoft.netcore.platforms/1.1.0/microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "/home/usmik/.nuget/packages/microsoft.netcore.targets/1.1.0/microsoft.netcore.targets.1.1.0.nupkg.sha512",
+    "/home/usmik/.nuget/packages/system.io/4.3.0/system.io.4.3.0.nupkg.sha512",
+    "/home/usmik/.nuget/packages/system.reflection/4.3.0/system.reflection.4.3.0.nupkg.sha512",
+    "/home/usmik/.nuget/packages/system.reflection.primitives/4.3.0/system.reflection.primitives.4.3.0.nupkg.sha512",
+    "/home/usmik/.nuget/packages/system.reflection.typeextensions/4.3.0/system.reflection.typeextensions.4.3.0.nupkg.sha512",
+    "/home/usmik/.nuget/packages/system.runtime/4.3.0/system.runtime.4.3.0.nupkg.sha512",
+    "/home/usmik/.nuget/packages/system.text.encoding/4.3.0/system.text.encoding.4.3.0.nupkg.sha512",
+    "/home/usmik/.nuget/packages/system.threading.tasks/4.3.0/system.threading.tasks.4.3.0.nupkg.sha512"
+  ],
   "logs": []
 }

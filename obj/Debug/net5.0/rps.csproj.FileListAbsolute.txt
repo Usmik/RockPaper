@@ -14,3 +14,4 @@
 /home/usmik/Projects VS Code/rps/obj/Debug/net5.0/ref/rps.dll
 /home/usmik/Projects VS Code/rps/obj/Debug/net5.0/rps.pdb
 /home/usmik/Projects VS Code/rps/obj/Debug/net5.0/rps.genruntimeconfig.cache
+/home/usmik/Projects VS Code/rps/bin/Debug/net5.0/ConsoleTables.dll
