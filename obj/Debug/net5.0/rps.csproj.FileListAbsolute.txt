@@ -1,0 +1,16 @@
+/home/usmik/Projects VS Code/rps/bin/Debug/net5.0/rps
+/home/usmik/Projects VS Code/rps/bin/Debug/net5.0/rps.deps.json
+/home/usmik/Projects VS Code/rps/bin/Debug/net5.0/rps.runtimeconfig.json
+/home/usmik/Projects VS Code/rps/bin/Debug/net5.0/rps.runtimeconfig.dev.json
+/home/usmik/Projects VS Code/rps/bin/Debug/net5.0/rps.dll
+/home/usmik/Projects VS Code/rps/bin/Debug/net5.0/ref/rps.dll
+/home/usmik/Projects VS Code/rps/bin/Debug/net5.0/rps.pdb
+/home/usmik/Projects VS Code/rps/obj/Debug/net5.0/rps.csproj.AssemblyReference.cache
+/home/usmik/Projects VS Code/rps/obj/Debug/net5.0/rps.GeneratedMSBuildEditorConfig.editorconfig
+/home/usmik/Projects VS Code/rps/obj/Debug/net5.0/rps.AssemblyInfoInputs.cache
+/home/usmik/Projects VS Code/rps/obj/Debug/net5.0/rps.AssemblyInfo.cs
+/home/usmik/Projects VS Code/rps/obj/Debug/net5.0/rps.csproj.CoreCompileInputs.cache
+/home/usmik/Projects VS Code/rps/obj/Debug/net5.0/rps.dll
+/home/usmik/Projects VS Code/rps/obj/Debug/net5.0/ref/rps.dll
+/home/usmik/Projects VS Code/rps/obj/Debug/net5.0/rps.pdb
+/home/usmik/Projects VS Code/rps/obj/Debug/net5.0/rps.genruntimeconfig.cache
